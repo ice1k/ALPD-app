@@ -12,4 +12,6 @@ ALPD组织的安卓app,原计划是用Kotlin写，后来发现AS装上Kotlin插�
 ## 关于APP后台
 冰封由于没有得到社团的任何资金支持~所以这个的后台是用的github~<br/>
 ALPD的海报托管在[这里](https://github.com/ice1000/App-raw)。<br/>
+因为是github所以特别慢啦~<br/>
+现在的运维是何天昊。<br/>
 这是对资源的一种灵活运用 不是吗？ :joy:
