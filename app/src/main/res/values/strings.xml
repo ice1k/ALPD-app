@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ALPD</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="upload">投稿</string>
+    <string name="my_download">我的下载</string>
+    <string name="settings">设置</string>
+    <string name="share">分享</string>
+    <string name="org_name">成外海报社</string>
+    <string name="back_to_title">回到主界面</string>
+    <string name="default_info">作者：ALPD社团</string>
+    <string name="about_author">关于作者</string>
+    <string name="back">返回</string>
+    <string name="about_me_text">\n\n作者：张寅森(千里冰封) ALPD成员、全栈工程师(iOS除外)\n\n技能：Java,Kotlin,C,common lisp,Ruby \n\n联系方式：QQ 951394653\ngithub ice1000\n\n</string>
+    <string name="refresh">刷新</string>
+</resources>
