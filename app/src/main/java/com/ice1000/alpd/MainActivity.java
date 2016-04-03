@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -181,6 +182,8 @@ public class MainActivity extends BaseActivity
     }
 
     private void refresh(){
+        toast("刷新中。。。");
+        images.removeAllViews();
         v("size = " + size);
         for(int i = 1; i < size && haveNew; i++){
 //        while(Tools.exists(String.format(Locale.CHINESE, MAIN_URL, i))){
