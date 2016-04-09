@@ -84,6 +84,7 @@ public class ImageViewActivity extends DownloadingActivity{
         setContentView(R.layout.activity_image_view);
         toast("加载中");
         initViews();
+        initFuncs();
     }
 
     private void initViews(){
@@ -130,6 +131,7 @@ public class ImageViewActivity extends DownloadingActivity{
                 toast("下载功能未开放，敬请期待");
             }
         });
+        getImage(getIntent().getIntExtra(NUMBER, 1), false);
     }
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
