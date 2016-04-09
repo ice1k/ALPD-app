@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,7 +15,7 @@ import android.widget.ImageView;
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class ImageViewActivity extends AppCompatActivity {
+public class ImageViewActivity extends BaseActivity{
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -35,7 +34,7 @@ public class ImageViewActivity extends AppCompatActivity {
      */
     private static final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler();
-    private View contentView;
+    private ImageView contentView;
     private final Runnable mHidePart2Runnable = new Runnable() {
         @SuppressLint("InlinedApi")
         @Override
@@ -88,7 +87,6 @@ public class ImageViewActivity extends AppCompatActivity {
     };
 
     private Button download;
-    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +100,7 @@ public class ImageViewActivity extends AppCompatActivity {
 
         visible = true;
         controlsView = findViewById(R.id.fullscreen_content_controls);
-        contentView = findViewById(R.id.fullscreen_content);
+        contentView = (ImageView) findViewById(R.id.fullscreen_content);
 
         // Set up the user interaction to manually show or hide the system UI.
         contentView.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +114,7 @@ public class ImageViewActivity extends AppCompatActivity {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         download = (Button) findViewById(R.id.dummy_button);
+        assert download != null;
         download.setOnTouchListener(mDelayHideTouchListener);
     }
 

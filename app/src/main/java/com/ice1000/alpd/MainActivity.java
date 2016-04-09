@@ -74,7 +74,7 @@ public class MainActivity extends BaseActivity
                                 )
                         );
                         textView.setText(R.string.default_info);
-//                        textView.setText("编号：" + poster.cnt);
+                        textView.append("\n图片编号：" + poster.cnt);
                         images.addView(linearLayout);
                         break;
                 }
@@ -162,13 +162,17 @@ public class MainActivity extends BaseActivity
         return true;
     }
 
-    private void getImage(final int i) {
+    private void getImage(final int i, final boolean isSmall) {
         new Thread(){
             @Override
             public void run() {
                 byte[] data = new byte[0];
                 try {
-                    data = ImageService.getImage(String.format(Locale.CHINESE, MAIN_URL, i));
+                    data = ImageService.getImage(String.format(
+                            Locale.CHINESE,
+                            isSmall ? MAIN_URL : BIG_URL,
+                            i)
+                    );
                 } catch (IOException ignored) {}
                 if(data.length > 100) {
                     Message message = new Message();
@@ -190,7 +194,7 @@ public class MainActivity extends BaseActivity
         for(int i = 1; i < size && haveNew; i++){
 //        while(Tools.exists(String.format(Locale.CHINESE, MAIN_URL, i))){
             v("downloading " + i);
-            getImage(i);
+            getImage(i, true);
         }
     }
 }

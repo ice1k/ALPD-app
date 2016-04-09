@@ -2,6 +2,7 @@ package data;
 
 /**
  * Created by asus1 on 2016/4/3.
+ * data class
  */
 public class Poster {
     public byte[] bytes;
