@@ -1,4 +1,4 @@
-package com.ice1000.alpd;
+package util;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.ice1000.alpd.R;
+import com.ice1000.alpd.SettingsActivity;
 
 /**
  * Created by asus1 on 2016/4/3.

@@ -1,4 +1,4 @@
-package com.ice1000.alpd;
+package util;
 
 import android.os.Handler;
 import android.os.Message;
@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.Locale;
 
 import data.Poster;
-import util.ImageService;
 
 /**
  * Created by asus1 on 2016/4/10.

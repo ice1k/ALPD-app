@@ -3,6 +3,8 @@ package com.ice1000.alpd;
 import android.os.Bundle;
 import android.view.View;
 
+import util.BaseActivity;
+
 public class SettingsActivity extends BaseActivity {
 
     @Override
