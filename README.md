@@ -11,7 +11,7 @@ ALPD组织的安卓app,原计划是用Kotlin写，后来发现AS装上Kotlin插�
 其实社团还有另一个程序员，不过他现在还在学H5(我正在劝说他学ROR :joy:
 
 ## 发展计划
-- [ ] 更快的后端云()
+- [X] 更快的后端云
 - [X] 自动加载预览小图片
 - [ ] 下拉刷新
 - [ ] 点击下载大图片
@@ -20,9 +20,8 @@ ALPD组织的安卓app,原计划是用Kotlin写，后来发现AS装上Kotlin插�
 
 ## 关于APP后台
 冰封由于没有得到社团的任何资金支持~<br/>
-所以这个的后台是用的github~<br/>
-ALPD的海报托管在[这里](https://github.com/ice1000/App-raw)。<br/>
-因为是github所以特别慢啦~<br/>
+所以这个的后台是用的coding(早期是github)~<br/>
+ALPD的海报托管在[这里](https://coding.net/u/ice1000/p/App-raw/git)。<br/>
 现在的运维是何天昊。<br/>
 这是对资源的一种灵活运用 不是吗？ :joy:
 

@@ -2,8 +2,6 @@ package com.ice1000.alpd;
 
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,27 +14,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.io.IOException;
-import java.util.Locale;
-
 import data.Poster;
-import util.ImageService;
 
-public class MainActivity extends BaseActivity
+public class MainActivity extends DownloadingActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Handler handler;
     private LinearLayout images;
-    private int size;
-    public static final int IMAGE_GET = 0x000;
-    private static boolean haveNew = true;
-    public static final String BIG_URL =
-            "https://coding.net/u/ice1000/p/App-raw/git/raw/master/alpd_pics/%d.png";
-    public static final String MAIN_URL =
-            "https://coding.net/u/ice1000/p/App-raw/git/raw/master/alpd_small/%d.png";
-//            "https://raw.githubusercontent.com/ice1000/App-raw/master/alpd_small/%d.png";
-    public static final String COUNT_URL = "";
-//            "https://raw.githubusercontent.com/ice1000/App-raw/master/size";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,40 +30,6 @@ public class MainActivity extends BaseActivity
         v("init finished.");
         size = 200;
         refresh();
-    }
-
-    private void initFuncs() {
-        handler = new Handler(new Handler.Callback() {
-            @Override
-            public boolean handleMessage(Message msg) {
-                switch (msg.what){
-                    case IMAGE_GET:
-                        Poster poster = ((Poster)(msg.obj));
-                        byte[] data = poster.bytes;
-                        LinearLayout linearLayout = (LinearLayout)
-                                LayoutInflater.from(MainActivity.this).inflate(
-                                        R.layout.image_meta,
-                                        null
-                                );
-                        TextView textView = (TextView)
-                                linearLayout.findViewById(R.id.text_source);
-                        ImageView imageView = (ImageView)
-                                linearLayout.findViewById(R.id.image_source);
-                        imageView.setImageBitmap(
-                                BitmapFactory.decodeByteArray(
-                                        data,
-                                        0,
-                                        data.length
-                                )
-                        );
-                        textView.setText(R.string.default_info);
-                        textView.append("\n图片编号：" + poster.cnt);
-                        images.addView(linearLayout);
-                        break;
-                }
-                return true;
-            }
-        });
     }
 
     private void initViews(){
@@ -162,31 +111,6 @@ public class MainActivity extends BaseActivity
         return true;
     }
 
-    private void getImage(final int i, final boolean isSmall) {
-        new Thread(){
-            @Override
-            public void run() {
-                byte[] data = new byte[0];
-                try {
-                    data = ImageService.getImage(String.format(
-                            Locale.CHINESE,
-                            isSmall ? MAIN_URL : BIG_URL,
-                            i)
-                    );
-                } catch (IOException ignored) {}
-                if(data.length > 100) {
-                    Message message = new Message();
-                    message.what = IMAGE_GET;
-                    message.obj = new Poster(data, i);
-                    handler.sendMessage(message);
-                }
-                else {
-                    haveNew = false;
-                }
-            }
-        }.start();
-    }
-
     private void refresh(){
         toast("刷新中。。。");
         images.removeAllViews();
@@ -196,5 +120,29 @@ public class MainActivity extends BaseActivity
             v("downloading " + i);
             getImage(i, true);
         }
+    }
+
+    @Override
+    protected void addView(Poster poster) {
+        byte[] data = poster.bytes;
+        LinearLayout linearLayout = (LinearLayout)
+                LayoutInflater.from(MainActivity.this).inflate(
+                        R.layout.image_meta,
+                        null
+                );
+        TextView textView = (TextView)
+                linearLayout.findViewById(R.id.text_source);
+        ImageView imageView = (ImageView)
+                linearLayout.findViewById(R.id.image_source);
+        imageView.setImageBitmap(
+                BitmapFactory.decodeByteArray(
+                        data,
+                        0,
+                        data.length
+                )
+        );
+        textView.setText(R.string.default_info);
+        textView.append("\n图片编号：" + poster.cnt);
+        images.addView(linearLayout);
     }
 }

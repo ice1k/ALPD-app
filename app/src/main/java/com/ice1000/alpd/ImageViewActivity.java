@@ -71,32 +71,21 @@ public class ImageViewActivity extends BaseActivity{
             hide();
         }
     };
-    /**
-     * Touch listener to use for in-layout UI controls to delay hiding the
-     * system UI. This is to prevent the jarring behavior of controls going away
-     * while interacting with activity UI.
-     */
-    private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            if (AUTO_HIDE) {
-                delayedHide(AUTO_HIDE_DELAY_MILLIS);
-            }
-            return false;
-        }
-    };
 
     private Button download;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_image_view);
+        toast("加载中");
+        initViews();
+    }
+
+    private void initViews(){
         ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
+        if (actionBar != null)
             actionBar.setDisplayHomeAsUpEnabled(true);
-        }
 
         visible = true;
         controlsView = findViewById(R.id.fullscreen_content_controls);
@@ -115,9 +104,29 @@ public class ImageViewActivity extends BaseActivity{
         // while interacting with the UI.
         download = (Button) findViewById(R.id.dummy_button);
         assert download != null;
-        download.setOnTouchListener(mDelayHideTouchListener);
-    }
+        download.setOnTouchListener(new View.OnTouchListener() {
+            /**
+             * Touch listener to use for in-layout UI controls to delay hiding the
+             * system UI. This is to prevent the jarring behavior of controls going away
+             * while interacting with activity UI.
+             */
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (AUTO_HIDE) {
+                    delayedHide(AUTO_HIDE_DELAY_MILLIS);
+                }
+                return false;
+            }
 
+        });
+        download.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: implement download function.
+                toast("下载功能未开放，敬请期待");
+            }
+        });
+    }
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -140,11 +149,10 @@ public class ImageViewActivity extends BaseActivity{
     }
 
     private void toggle() {
-        if (visible) {
+        if (visible)
             hide();
-        } else {
+        else
             show();
-        }
     }
 
     private void hide() {
