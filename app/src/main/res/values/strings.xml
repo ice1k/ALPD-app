@@ -15,4 +15,8 @@
     <string name="back">返回</string>
     <string name="about_me_text">\n\n作者：张寅森(千里冰封) ALPD成员、全栈工程师(iOS除外)\n\n技能：Java,Kotlin,C,common lisp,Ruby \n\n联系方式：QQ 951394653\ngithub ice1000\n\n</string>
     <string name="refresh">刷新</string>
+
+    <string name="title_activity_image_view">ImageViewActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

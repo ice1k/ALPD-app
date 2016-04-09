@@ -30,10 +30,13 @@ public class MainActivity extends BaseActivity
     private int size;
     public static final int IMAGE_GET = 0x000;
     private static boolean haveNew = true;
+    public static final String BIG_URL =
+            "https://coding.net/u/ice1000/p/App-raw/git/raw/master/alpd_pics/%d.png";
     public static final String MAIN_URL =
-            "https://raw.githubusercontent.com/ice1000/App-raw/master/alpd_small/%d.png";
-    public static final String COUNT_URL =
-            "https://raw.githubusercontent.com/ice1000/App-raw/master/size";
+            "https://coding.net/u/ice1000/p/App-raw/git/raw/master/alpd_small/%d.png";
+//            "https://raw.githubusercontent.com/ice1000/App-raw/master/alpd_small/%d.png";
+    public static final String COUNT_URL = "";
+//            "https://raw.githubusercontent.com/ice1000/App-raw/master/size";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
