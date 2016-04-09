@@ -1,5 +1,6 @@
 package com.ice1000.alpd;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -10,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -124,7 +126,7 @@ public class MainActivity extends DownloadingActivity
     }
 
     @Override
-    protected void addView(Poster poster) {
+    protected void addView(final Poster poster) {
         byte[] data = poster.bytes;
         LinearLayout linearLayout = (LinearLayout)
                 LayoutInflater.from(MainActivity.this).inflate(
@@ -144,6 +146,18 @@ public class MainActivity extends DownloadingActivity
         );
         textView.setText(R.string.default_info);
         textView.append("\n图片编号：" + poster.cnt);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toast("正在加载大图。。。");
+                Intent intent = new Intent(
+                        MainActivity.this,
+                        ImageViewActivity.class
+                );
+                intent.putExtra(NUMBER, poster.cnt);
+                startActivity(intent);
+            }
+        });
         images.addView(linearLayout);
     }
 }

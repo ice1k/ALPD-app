@@ -19,6 +19,7 @@ public abstract class DownloadingActivity extends BaseActivity {
 
     protected int size;
     public static final int IMAGE_GET = 0x000;
+    public static final String NUMBER = "NUMBER";
     public static final String BIG_URL =
             "https://coding.net/u/ice1000/p/App-raw/git/raw/master/alpd_pics/%d.png";
     public static final String MAIN_URL =

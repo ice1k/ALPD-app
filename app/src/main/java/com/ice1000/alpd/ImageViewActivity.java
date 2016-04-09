@@ -1,6 +1,7 @@
 package com.ice1000.alpd;
 
 import android.annotation.SuppressLint;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.NavUtils;
@@ -11,13 +12,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import util.BaseActivity;
+import data.Poster;
+import util.DownloadingActivity;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class ImageViewActivity extends BaseActivity {
+public class ImageViewActivity extends DownloadingActivity{
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -190,5 +192,14 @@ public class ImageViewActivity extends BaseActivity {
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
+    }
+
+    @Override
+    protected void addView(Poster poster) {
+        contentView.setImageBitmap(BitmapFactory.decodeByteArray(
+                poster.bytes,
+                0,
+                poster.bytes.length
+        ));
     }
 }
