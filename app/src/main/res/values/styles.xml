@@ -34,6 +34,7 @@
         <item name="android:layout_height">@dimen/setting_width</item>
         <item name="android:background">@drawable/btn_default_more_light</item>
         <item name="android:gravity">center</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:layout_gravity">center_horizontal</item>
     </style>
 

@@ -14,7 +14,7 @@ public class AboutMeActivity extends BaseActivity {
     }
 
     public void back(View view){
-        finish();
+        go2Settings(true);
     }
 
     public void openIceGithub(View view){
@@ -25,5 +25,8 @@ public class AboutMeActivity extends BaseActivity {
     }
     public void openHeGithub(View view){
         openWeb("https://github.com/hthclyde");
+    }
+    public void openCWOJ(View view) {
+        openWeb("https://github.com/CDFLS/CWOJ");
     }
 }

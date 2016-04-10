@@ -31,7 +31,13 @@ public class MainActivity extends DownloadingActivity
         initViews();
         initFuncs();
         v("init finished.");
-        size = 200;
+        size = 100;
+        refresh();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
         refresh();
     }
 
@@ -73,13 +79,13 @@ public class MainActivity extends DownloadingActivity
                 toast("上传功能未开放");
                 break;
             case R.id.nav_downloads:
-
+                toast("下载功能未开放");
                 break;
             case R.id.nav_settings:
                 go2Settings(true);
                 break;
             case R.id.nav_share:
-
+                toast("分享功能未开放");
                 break;
             default:
 

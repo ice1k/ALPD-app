@@ -33,6 +33,10 @@
                 android:onClick="openIceGithub"
                 style="@style/setting_option"/>
             <TextView
+                android:text="@string/cwoj"
+                android:onClick="openCWOJ"
+                style="@style/setting_option"/>
+            <TextView
                 style="@style/setting_option"
                 android:text="@string/wei_github"
                 android:onClick="openWeiGithub" />

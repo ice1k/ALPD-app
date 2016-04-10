@@ -37,9 +37,10 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="download">下载图片</string>
     <string name="contact_us">联系我们</string>
-    <string name="about_alpd">关于ALPD社团\n\n暂时没有内容</string>
+    <string name="about_alpd">关于ALPD社团\n\n暂时没有内容\n\n</string>
     <string name="join_us">加入我们</string>
     <string name="ice_github">冰封的github</string>
     <string name="wei_github">张新伟的github</string>
     <string name="he_github">何天昊的github</string>
+    <string name="cwoj">推广：成外OJ</string>
 </resources>
