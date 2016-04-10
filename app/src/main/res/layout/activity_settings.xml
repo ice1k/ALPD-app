@@ -22,7 +22,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/btn_default_light"
+                android:background="@drawable/btn_default_more_light"
                 android:onClick="goBack"
                 android:gravity="center"
                 android:textSize="20sp"
@@ -30,7 +30,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/btn_default_light"
+                android:background="@drawable/btn_default_more_light"
                 android:onClick="aboutAuthor"
                 android:gravity="center"
                 android:textSize="20sp"

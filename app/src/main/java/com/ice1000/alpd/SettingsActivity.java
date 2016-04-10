@@ -1,6 +1,7 @@
 package com.ice1000.alpd;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 
 import util.BaseActivity;
@@ -15,6 +16,11 @@ public class SettingsActivity extends BaseActivity {
 
     public void goBack(View view){
         go2Activity(MainActivity.class);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return false;
     }
 
     public void aboutAuthor(View view) {
