@@ -30,6 +30,9 @@ ALPD的海报托管在[这里](https://coding.net/u/ice1000/p/App-raw/git)。<br
 
 ## 更新记录
 
+### 2016年4月11日 白天
+1. 更新设置界面的bug
+
 ### 2016年4月11日 凌晨
 1. 实现预览大图功能
 1. 更浅色的预览栏
@@ -40,10 +43,12 @@ ALPD的海报托管在[这里](https://coding.net/u/ice1000/p/App-raw/git)。<br
 
 ### 2016年4月10日
 1. 更新[后端云——coding](https://coding.net/u/ice1000/p/App-raw/git)，快得多~ 爽死了~
+
 ![](./raw/scale3.jpg)
 
 ### 2016年4月8日之前
 1. 完善基本功能：Main AboutMe Base Launch Settings
 1. 简单布局
 1. 网络流 下载图片from github(github太慢啦~也有可能先换个国内git托管仓库或者用一些第三方后端云)
+
 ![](./raw/main.jpg)

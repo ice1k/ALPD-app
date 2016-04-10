@@ -76,7 +76,7 @@ public class MainActivity extends DownloadingActivity
 
                 break;
             case R.id.nav_settings:
-                go2Settings();
+                go2Settings(true);
                 break;
             case R.id.nav_share:
 
@@ -97,7 +97,7 @@ public class MainActivity extends DownloadingActivity
         int id = item.getItemId();
         switch (id) {
             case R.id.action_settings:
-                go2Settings();
+                go2Settings(true);
                 return true;
             case R.id.action_refresh:
                 haveNew = true;

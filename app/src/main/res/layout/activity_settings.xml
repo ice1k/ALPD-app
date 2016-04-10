@@ -21,7 +21,7 @@
             android:layout_height="wrap_content">
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/setting_width"
                 android:background="@drawable/btn_default_more_light"
                 android:onClick="goBack"
                 android:gravity="center"
@@ -29,12 +29,20 @@
                 android:text="@string/back_to_title" />
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/setting_width"
                 android:background="@drawable/btn_default_more_light"
                 android:onClick="aboutAuthor"
                 android:gravity="center"
                 android:textSize="20sp"
-                android:text="@string/about_author" />
+                android:text="@string/about_us" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/setting_width"
+                android:background="@drawable/btn_default_more_light"
+                android:onClick="joinUs"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="@string/join_us" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

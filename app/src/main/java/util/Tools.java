@@ -11,6 +11,7 @@ import java.net.URL;
  *
  */
 public class Tools {
+
     public static boolean exists(final String URLName) {
         final boolean[] bool = new boolean[1];
         final Handler handler = new Handler(new Handler.Callback() {

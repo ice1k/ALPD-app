@@ -1,6 +1,7 @@
 package util;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -32,17 +33,30 @@ public class BaseActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.action_settings:
-                go2Settings();
+                go2Settings(true);
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    protected void go2Activity(Class<?> clazz){startActivity(new Intent(this, clazz));}
+    protected void go2Activity(Class<?> clazz, boolean shouldFinish){
+        startActivity(new Intent(this, clazz));
+        if(shouldFinish)
+            finish();
+    }
 
-    protected void go2Settings(){go2Activity(SettingsActivity.class);}
+    protected void go2Settings(boolean shouldFinish){
+        go2Activity(SettingsActivity.class, shouldFinish);
+    }
 
     protected void v(String log){
         Log.v(this.toString(), log);
+    }
+
+    protected void openWeb(String uri){
+        startActivity(new Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse(uri))
+        );
     }
 }

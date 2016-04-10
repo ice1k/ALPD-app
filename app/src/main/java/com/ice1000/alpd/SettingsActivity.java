@@ -15,7 +15,7 @@ public class SettingsActivity extends BaseActivity {
     }
 
     public void goBack(View view){
-        go2Activity(MainActivity.class);
+        go2Activity(MainActivity.class, true);
     }
 
     @Override
@@ -24,6 +24,10 @@ public class SettingsActivity extends BaseActivity {
     }
 
     public void aboutAuthor(View view) {
-        go2Activity(AboutMeActivity.class);
+        go2Activity(AboutMeActivity.class, true);
+    }
+
+    public void joinUs(View view){
+        toast("暂未开放");
     }
 }

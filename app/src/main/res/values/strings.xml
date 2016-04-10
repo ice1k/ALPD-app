@@ -11,9 +11,24 @@
     <string name="org_name">成外海报社</string>
     <string name="back_to_title">回到主界面</string>
     <string name="default_info">作者：ALPD社团</string>
-    <string name="about_author">关于作者</string>
+    <string name="about_us">关于我们</string>
     <string name="back">返回</string>
-    <string name="about_me_text">\n\n作者：张寅森(千里冰封) ALPD成员、全栈工程师(iOS除外)\n\n技能：Java,Kotlin,C,common lisp,Ruby \n\n联系方式：QQ 951394653\ngithub ice1000\n\n</string>
+    <string name="about_me_text">
+        关于开发团队\n\n
+        app作者：张寅森(千里冰封)\n
+        ALPD成员、全栈工程师(iOS除外)\n
+        技能：Java,Kotlin,C,common lisp,Ruby\n
+        联系方式：\n
+        QQ - 951394653\n
+        github - ice1000\n\n
+        测试工程师：张新伟 \n
+        冰封友人 \n
+        技能：C#, .net, VC++, C \n
+        联系方式：\n
+        github - iXinWei\n\n
+        后台运维：何天昊\n
+        ALPD成员、iOS开发\n
+    </string>
     <string name="refresh">刷新</string>
 
     <string name="title_activity_image_view">图片预览</string>
@@ -21,4 +36,6 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="download">下载图片</string>
     <string name="contact_us">联系我们</string>
+    <string name="about_alpd">关于ALPD社团\n\n暂时没有内容</string>
+    <string name="join_us">加入我们</string>
 </resources>
