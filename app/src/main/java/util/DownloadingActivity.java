@@ -23,7 +23,7 @@ public abstract class DownloadingActivity extends BaseActivity {
     protected Handler handler;
     protected static boolean haveNew = true;
 
-    protected final static String ALBUM_PATH
+    protected final static String SAVE_PATH
             = Environment.getExternalStorageDirectory() + "/apld-download/";
     protected int size;
     public static final int IMAGE_GET = 0x000;
@@ -86,10 +86,10 @@ public abstract class DownloadingActivity extends BaseActivity {
     protected abstract void addView(Poster poster);
 
     protected void saveFile(Bitmap bm, String fileName) throws IOException {
-        File dirFile = new File(ALBUM_PATH);
+        File dirFile = new File(SAVE_PATH);
         if(!dirFile.exists())
             v("dirFile.mkdir() = " + dirFile.mkdir());
-        File myCaptureFile = new File(ALBUM_PATH + fileName);
+        File myCaptureFile = new File(SAVE_PATH + fileName);
         BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(myCaptureFile));
         bm.compress(Bitmap.CompressFormat.JPEG, 80, bos);
         bos.flush();

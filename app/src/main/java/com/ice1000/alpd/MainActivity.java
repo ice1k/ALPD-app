@@ -2,6 +2,7 @@ package com.ice1000.alpd;
 
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,6 +16,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.io.File;
 
 import data.Poster;
 import util.DownloadingActivity;
@@ -79,7 +82,16 @@ public class MainActivity extends DownloadingActivity
                 toast("上传功能未开放");
                 break;
             case R.id.nav_downloads:
-                toast("下载功能未开放");
+                Intent intent = new Intent(
+                        Intent.ACTION_VIEW
+                );
+                intent.setDataAndType(
+                        Uri.fromFile(
+                                new File(SAVE_PATH)
+                        ),
+                        "image/*"
+                );
+                startActivity(intent);
                 break;
             case R.id.nav_settings:
                 go2Settings(true);

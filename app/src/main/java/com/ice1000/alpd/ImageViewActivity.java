@@ -4,12 +4,13 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.SystemClock;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
+import android.text.format.Time;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -132,6 +133,7 @@ public class ImageViewActivity extends DownloadingActivity{
             public void onClick(View v) {
                 final Dialog dialog = ProgressDialog.show(ImageViewActivity.this, "保存图片", "图片正在保存中，请稍等...", true);
                 new Thread(new Runnable(){
+                    @SuppressLint("DefaultLocale")
                     @Override
                     public void run() {
                         Message message = new Message();
@@ -139,9 +141,14 @@ public class ImageViewActivity extends DownloadingActivity{
                         data.dialog = dialog;
                         try {
                             contentView.buildDrawingCache();
+                            Time time = new Time("GMT+8");
+                            time.setToNow();
                             saveFile(
-                                    contentView.getDrawingCache(),
-                                    String.valueOf(SystemClock.currentThreadTimeMillis())
+                                    ((BitmapDrawable)contentView.getDrawable()).getBitmap(),
+                                    String.format(
+                                            "%s.png",
+                                            time.toString()
+                                            )
                             );
                             data.msg = "图片保存成功！";
                         } catch (IOException e) {
