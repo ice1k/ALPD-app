@@ -1,9 +1,13 @@
 package com.ice1000.alpd;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
@@ -12,6 +16,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import java.io.IOException;
+
+import data.DownloadData;
 import data.Poster;
 import util.DownloadingActivity;
 
@@ -76,8 +83,6 @@ public class ImageViewActivity extends DownloadingActivity{
         }
     };
 
-    private Button download;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,7 +112,7 @@ public class ImageViewActivity extends DownloadingActivity{
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        download = (Button) findViewById(R.id.dummy_button);
+        Button download = (Button) findViewById(R.id.dummy_button);
         assert download != null;
         download.setOnTouchListener(new View.OnTouchListener() {
             /**
@@ -122,17 +127,37 @@ public class ImageViewActivity extends DownloadingActivity{
                 }
                 return false;
             }
-
         });
-        download.setOnClickListener(new View.OnClickListener() {
-            @Override
+        download.setOnClickListener(new Button.OnClickListener(){
             public void onClick(View v) {
-                // TODO: implement download function.
-                toast("下载功能未开放，敬请期待");
+                final Dialog dialog = ProgressDialog.show(ImageViewActivity.this, "保存图片", "图片正在保存中，请稍等...", true);
+                new Thread(new Runnable(){
+                    @Override
+                    public void run() {
+                        Message message = new Message();
+                        DownloadData data = new DownloadData();
+                        data.dialog = dialog;
+                        try {
+                            contentView.buildDrawingCache();
+                            saveFile(
+                                    contentView.getDrawingCache(),
+                                    String.valueOf(SystemClock.currentThreadTimeMillis())
+                            );
+                            data.msg = "图片保存成功！";
+                        } catch (IOException e) {
+                            data.msg = "图片保存失败！";
+                            e.printStackTrace();
+                        }
+                        message.obj = data;
+                        message.what = IMAGE_SAVE;
+                        handler.sendMessage(message);
+                    }
+                }).start();
             }
         });
         getImage(getIntent().getIntExtra(NUMBER, 1), false);
     }
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);

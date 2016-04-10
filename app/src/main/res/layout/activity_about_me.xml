@@ -45,6 +45,10 @@
                 android:text="@string/he_github"
                 android:onClick="openHeGithub"/>
             <TextView
+                style="@style/setting_option"
+                android:text="@string/app_raw_repos"
+                android:onClick="openAppRaw"/>
+            <TextView
                 android:text="@string/back"
                 android:onClick="back"
                 style="@style/setting_option" />

@@ -1,11 +1,17 @@
 package util;
 
+import android.graphics.Bitmap;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Locale;
 
+import data.DownloadData;
 import data.Poster;
 
 /**
@@ -17,8 +23,11 @@ public abstract class DownloadingActivity extends BaseActivity {
     protected Handler handler;
     protected static boolean haveNew = true;
 
+    protected final static String ALBUM_PATH
+            = Environment.getExternalStorageDirectory() + "/apld-download/";
     protected int size;
     public static final int IMAGE_GET = 0x000;
+    public static final int IMAGE_SAVE = 0x001;
     public static final String NUMBER = "NUMBER";
     public static final String BIG_URL =
             "https://coding.net/u/ice1000/p/App-raw/git/raw/master/alpd_pics/%d.png";
@@ -62,6 +71,12 @@ public abstract class DownloadingActivity extends BaseActivity {
                         Poster poster = ((Poster)(msg.obj));
                         addView(poster);
                         break;
+                    case IMAGE_SAVE:
+                        DownloadData data = (DownloadData) msg.obj;
+                        data.dialog.dismiss();
+                        v(data.msg);
+                        toast(data.msg);
+
                 }
                 return true;
             }
@@ -69,4 +84,15 @@ public abstract class DownloadingActivity extends BaseActivity {
     }
 
     protected abstract void addView(Poster poster);
+
+    protected void saveFile(Bitmap bm, String fileName) throws IOException {
+        File dirFile = new File(ALBUM_PATH);
+        if(!dirFile.exists())
+            v("dirFile.mkdir() = " + dirFile.mkdir());
+        File myCaptureFile = new File(ALBUM_PATH + fileName);
+        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(myCaptureFile));
+        bm.compress(Bitmap.CompressFormat.JPEG, 80, bos);
+        bos.flush();
+        bos.close();
+    }
 }

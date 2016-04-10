@@ -29,4 +29,7 @@ public class AboutMeActivity extends BaseActivity {
     public void openCWOJ(View view) {
         openWeb("https://github.com/CDFLS/CWOJ");
     }
+    public void openAppRaw(View view) {
+        openWeb("https://coding.net/u/ice1000/p/App-raw/git");
+    }
 }
