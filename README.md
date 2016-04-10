@@ -5,6 +5,8 @@
 ALPD组织的安卓app,原计划是用Kotlin写，后来发现AS装上Kotlin插件后并不能正常运行。。。  :joy:<br/>
 所以是Java~<br/>
 全栈项目，由冰封个人开发！<br/>
+测试：[张新伟](https://github.com/iWinwei)<br/>
+后台：[何天昊](https://github.com/hthclyde)
 
 ## 关于ALPD
 这是一个做海报的社团。<br/>
@@ -26,6 +28,7 @@ ALPD组织的安卓app,原计划是用Kotlin写，后来发现AS装上Kotlin插�
 所以这个的后台是用的coding(早期是github)~<br/>
 ALPD的海报托管在[这里](https://coding.net/u/ice1000/p/App-raw/git)。<br/>
 现在的运维是何天昊。<br/>
+测试工程师是张新伟。<br/>
 这是对资源的一种灵活运用 不是吗？ :joy:
 
 ## 更新记录
