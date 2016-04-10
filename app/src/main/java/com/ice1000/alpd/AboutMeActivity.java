@@ -16,4 +16,14 @@ public class AboutMeActivity extends BaseActivity {
     public void back(View view){
         finish();
     }
+
+    public void openIceGithub(View view){
+        openWeb("https://github.com/ice1000");
+    }
+    public void openWeiGithub(View view){
+        openWeb("https://github.com/iXinwei");
+    }
+    public void openHeGithub(View view){
+        openWeb("https://github.com/hthclyde");
+    }
 }

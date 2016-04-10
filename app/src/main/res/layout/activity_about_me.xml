@@ -29,13 +29,22 @@
                 android:text="@string/about_me_text"/>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_default_light"
+                android:text="@string/ice_github"
+                android:onClick="openIceGithub"
+                style="@style/setting_option"/>
+            <TextView
+                style="@style/setting_option"
+                android:text="@string/wei_github"
+                android:onClick="openWeiGithub" />
+            <TextView
+                style="@style/setting_option"
+                android:text="@string/he_github"
+                android:onClick="openHeGithub"/>
+            <TextView
                 android:text="@string/back"
-                android:gravity="center"
                 android:onClick="back"
-                android:layout_gravity="center_horizontal" />
+                style="@style/setting_option" />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

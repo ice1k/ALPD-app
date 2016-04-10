@@ -27,7 +27,8 @@
         联系方式：\n
         github - iXinWei\n\n
         后台运维：何天昊\n
-        ALPD成员、iOS开发\n
+        ALPD成员、iOS开发\n\n
+        相关链接：\n
     </string>
     <string name="refresh">刷新</string>
 
@@ -38,4 +39,7 @@
     <string name="contact_us">联系我们</string>
     <string name="about_alpd">关于ALPD社团\n\n暂时没有内容</string>
     <string name="join_us">加入我们</string>
+    <string name="ice_github">冰封的github</string>
+    <string name="wei_github">张新伟的github</string>
+    <string name="he_github">何天昊的github</string>
 </resources>
