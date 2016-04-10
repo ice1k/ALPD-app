@@ -33,7 +33,7 @@ ALPD的海报托管在[这里](https://coding.net/u/ice1000/p/App-raw/git)。<br
 
 ## 更新记录
 
-### 2016年4月11日 白天
+### 2016年4月10日 白天
 1. 更新设置界面的bug
 1. 增加植入广告
 1. 增加下载功能
@@ -43,7 +43,7 @@ ALPD的海报托管在[这里](https://coding.net/u/ice1000/p/App-raw/git)。<br
 ![](./raw/dl2.png)
 ![](./raw/dl3.png)
 
-### 2016年4月11日 凌晨
+### 2016年4月10日 凌晨
 1. 实现预览大图功能
 1. 更浅色的预览栏
 1. 预览栏显示图片编号
@@ -51,7 +51,7 @@ ALPD的海报托管在[这里](https://coding.net/u/ice1000/p/App-raw/git)。<br
 ![](./raw/scale1.jpg)
 ![](./raw/scale2.jpg)
 
-### 2016年4月10日
+### 2016年4月9日
 1. 更新[后端云——coding](https://coding.net/u/ice1000/p/App-raw/git)，快得多~ 爽死了~
 
 ![](./raw/scale3.jpg)
