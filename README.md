@@ -28,7 +28,7 @@ ALPD组织的安卓app,原计划是用Kotlin写，后来发现AS装上Kotlin插�
 所以这个的后台是用的coding(早期是github)~<br/>
 ALPD的海报托管在[这里](https://coding.net/u/ice1000/p/App-raw/git)。<br/>
 现在的运维是何天昊。<br/>
-测试工程师是张新伟。<br/>
+测试工程师是张新伟(尽职尽责的测试啊简直)。<br/>
 这是对资源的一种灵活运用 不是吗？ :joy:
 
 ## 更新记录
