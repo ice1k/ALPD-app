@@ -27,23 +27,10 @@ import util.DownloadingActivity;
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class ImageViewActivity extends DownloadingActivity{
-    /**
-     * Whether or not the system UI should be auto-hidden after
-     * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
-     */
+public class ImageViewActivity extends DownloadingActivity {
+
     private static final boolean AUTO_HIDE = true;
-
-    /**
-     * If {@link #AUTO_HIDE} is set, the number of milliseconds to wait after
-     * user interaction before hiding the system UI.
-     */
     private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
-
-    /**
-     * Some older devices needs a small delay between UI widget updates
-     * and a change of the status and navigation bar.
-     */
     private static final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler();
     private ImageView contentView;
@@ -51,17 +38,10 @@ public class ImageViewActivity extends DownloadingActivity{
         @SuppressLint("InlinedApi")
         @Override
         public void run() {
-            // Delayed removal of status and navigation bar
-
-            // Note that some of these constants are new as of API 16 (Jelly Bean)
-            // and API 19 (KitKat). It is safe to use them, as they are inlined
-            // at compile-time and do nothing on earlier devices.
             contentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
-                    | View.SYSTEM_UI_FLAG_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+                    | View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
         }
     };
     private View controlsView;
@@ -70,9 +50,7 @@ public class ImageViewActivity extends DownloadingActivity{
         public void run() {
             // Delayed display of UI elements
             ActionBar actionBar = getSupportActionBar();
-            if (actionBar != null) {
-                actionBar.show();
-            }
+            if (actionBar != null) actionBar.show();
             controlsView.setVisibility(View.VISIBLE);
         }
     };
@@ -93,7 +71,7 @@ public class ImageViewActivity extends DownloadingActivity{
         initFuncs();
     }
 
-    private void initViews(){
+    private void initViews() {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null)
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -129,10 +107,10 @@ public class ImageViewActivity extends DownloadingActivity{
                 return false;
             }
         });
-        download.setOnClickListener(new Button.OnClickListener(){
+        download.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 final Dialog dialog = ProgressDialog.show(ImageViewActivity.this, "保存图片", "图片正在保存中，请稍等...", true);
-                new Thread(new Runnable(){
+                new Thread(new Runnable() {
                     @SuppressLint("DefaultLocale")
                     @Override
                     public void run() {
@@ -144,11 +122,11 @@ public class ImageViewActivity extends DownloadingActivity{
                             Time time = new Time("GMT+8");
                             time.setToNow();
                             saveFile(
-                                    ((BitmapDrawable)contentView.getDrawable()).getBitmap(),
+                                    ((BitmapDrawable) contentView.getDrawable()).getBitmap(),
                                     String.format(
                                             "%s.png",
                                             time.toString()
-                                            )
+                                    )
                             );
                             data.msg = "图片保存成功！";
                         } catch (IOException e) {
