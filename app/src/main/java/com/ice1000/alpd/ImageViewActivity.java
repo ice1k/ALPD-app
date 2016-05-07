@@ -15,13 +15,13 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import java.io.IOException;
 
 import data.DownloadData;
 import data.Poster;
 import util.DownloadingActivity;
+import view.BigImageView;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -33,7 +33,7 @@ public class ImageViewActivity extends DownloadingActivity {
     private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
     private static final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler();
-    private ImageView contentView;
+    private BigImageView contentView;
     private final Runnable mHidePart2Runnable = new Runnable() {
         @SuppressLint("InlinedApi")
         @Override
@@ -78,7 +78,7 @@ public class ImageViewActivity extends DownloadingActivity {
 
         visible = true;
         controlsView = findViewById(R.id.fullscreen_content_controls);
-        contentView = (ImageView) findViewById(R.id.fullscreen_content);
+        contentView = (BigImageView) findViewById(R.id.fullscreen_content);
 
         // Set up the user interaction to manually show or hide the system UI.
         contentView.setOnClickListener(new View.OnClickListener() {

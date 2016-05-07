@@ -24,6 +24,9 @@ ALPD组织的安卓app,原计划是用Kotlin写，后来发现AS装上Kotlin插�
 - [ ] 账号系统
 - [ ] 更优美的UI(社长你给我过来 :angry: )
 
+## 用到的lib
+[AndroidBigImage](https://github.com/nicolas-raoul/AndroidBigImage)<br/>
+
 ## 关于APP后台
 冰封由于没有得到社团的任何资金支持~<br/>
 所以这个的后台是用的coding(早期是github)~<br/>
@@ -33,6 +36,9 @@ ALPD的海报托管在[这里](https://coding.net/u/ice1000/p/App-raw/git)。<br
 这是对资源的一种灵活运用 不是吗？ :joy:
 
 ## 更新记录
+
+### 2016年5月8日
+1. 更新图片查看的体验
 
 ### 2016年4月10日 白天
 1. 更新设置界面的bug
