@@ -12,16 +12,14 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.text.format.Time;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-
-import java.io.IOException;
-
 import data.DownloadData;
 import data.Poster;
 import util.DownloadingActivity;
 import view.BigImageView;
+
+import java.io.IOException;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -55,12 +53,7 @@ public class ImageViewActivity extends DownloadingActivity {
         }
     };
     private boolean visible;
-    private final Runnable mHideRunnable = new Runnable() {
-        @Override
-        public void run() {
-            hide();
-        }
-    };
+    private final Runnable mHideRunnable = this::hide;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,64 +74,47 @@ public class ImageViewActivity extends DownloadingActivity {
         contentView = (BigImageView) findViewById(R.id.fullscreen_content);
 
         // Set up the user interaction to manually show or hide the system UI.
-        contentView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toggle();
-            }
-        });
+        if (contentView != null) {
+            contentView.setOnClickListener(view -> toggle());
+        }
 
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         Button download = (Button) findViewById(R.id.dummy_button);
         assert download != null;
-        download.setOnTouchListener(new View.OnTouchListener() {
-            /**
-             * Touch listener to use for in-layout UI controls to delay hiding the
-             * system UI. This is to prevent the jarring behavior of controls going away
-             * while interacting with activity UI.
-             */
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if (AUTO_HIDE) {
-                    delayedHide(AUTO_HIDE_DELAY_MILLIS);
-                }
-                return false;
+        download.setOnTouchListener((view, motionEvent) -> {
+            if (AUTO_HIDE) {
+                delayedHide(AUTO_HIDE_DELAY_MILLIS);
             }
+            return false;
         });
-        download.setOnClickListener(new Button.OnClickListener() {
-            public void onClick(View v) {
-                final Dialog dialog = ProgressDialog.show(ImageViewActivity.this, "保存图片", "图片正在保存中，请稍等...", true);
-                new Thread(new Runnable() {
-                    @SuppressLint("DefaultLocale")
-                    @Override
-                    public void run() {
-                        Message message = new Message();
-                        DownloadData data = new DownloadData();
-                        data.dialog = dialog;
-                        try {
-                            contentView.buildDrawingCache();
-                            Time time = new Time("GMT+8");
-                            time.setToNow();
-                            saveFile(
-                                    ((BitmapDrawable) contentView.getDrawable()).getBitmap(),
-                                    String.format(
-                                            "%s.png",
-                                            time.toString()
-                                    )
-                            );
-                            data.msg = "图片保存成功！";
-                        } catch (IOException e) {
-                            data.msg = "图片保存失败！";
-                            e.printStackTrace();
-                        }
-                        message.obj = data;
-                        message.what = IMAGE_SAVE;
-                        handler.sendMessage(message);
-                    }
-                }).start();
-            }
+        download.setOnClickListener(v -> {
+            final Dialog dialog = ProgressDialog.show(ImageViewActivity.this, "保存图片", "图片正在保存中，请稍等...", true);
+            new Thread(() -> {
+                Message message = new Message();
+                DownloadData data = new DownloadData();
+                data.dialog = dialog;
+                try {
+                    contentView.buildDrawingCache();
+                    Time time = new Time("GMT+8");
+                    time.setToNow();
+                    saveFile(
+                            ((BitmapDrawable) contentView.getDrawable()).getBitmap(),
+                            String.format(
+                                    "%s.png",
+                                    time.toString()
+                            )
+                    );
+                    data.msg = "图片保存成功！";
+                } catch (IOException e) {
+                    data.msg = "图片保存失败！";
+                    e.printStackTrace();
+                }
+                message.obj = data;
+                message.what = IMAGE_SAVE;
+                handler.sendMessage(message);
+            }).start();
         });
         getImage(getIntent().getIntExtra(NUMBER, 1), false);
     }

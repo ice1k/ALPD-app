@@ -11,11 +11,9 @@ public class LaunchActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
 
-        new Thread(){
-            @Override
-            public void run() {
+        new Thread(() -> {
                 try {
-                    sleep(3000);
+                    Thread.sleep(3000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -26,7 +24,6 @@ public class LaunchActivity extends Activity {
                         )
                 );
                 finish();
-            }
-        }.start();
+        }).start();
     }
 }

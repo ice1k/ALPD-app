@@ -12,15 +12,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import java.io.File;
-
 import data.Poster;
 import util.DownloadingActivity;
+
+import java.io.File;
 
 public class MainActivity extends DownloadingActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -164,17 +162,14 @@ public class MainActivity extends DownloadingActivity
         );
         textView.setText(R.string.default_info);
         textView.append("\n图片编号：" + poster.cnt);
-        linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toast("正在加载大图。。。");
-                Intent intent = new Intent(
-                        MainActivity.this,
-                        ImageViewActivity.class
-                );
-                intent.putExtra(NUMBER, poster.cnt);
-                startActivity(intent);
-            }
+        linearLayout.setOnClickListener(v -> {
+            toast("正在加载大图。。。");
+            Intent intent = new Intent(
+                    MainActivity.this,
+                    ImageViewActivity.class
+            );
+            intent.putExtra(NUMBER, poster.cnt);
+            startActivity(intent);
         });
         images.addView(linearLayout);
     }
