@@ -14,31 +14,25 @@ public class BigImageView extends ImageView {
 
     public BigImageView(Context context) {
         super(context);
-        cbkAction = new Runnable(){
-            public void run(){
-                if(callBack != null)
-                    callBack.onSizeChanged(width, height);
-            }
+        cbkAction = () -> {
+            if(callBack != null)
+                callBack.onSizeChanged(width, height);
         };
     }
 
     public BigImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        cbkAction = new Runnable(){
-            public void run(){
-                if(callBack != null)
-                    callBack.onSizeChanged(width, height);
-            }
+        cbkAction = () -> {
+            if(callBack != null)
+                callBack.onSizeChanged(width, height);
         };
     }
 
     public BigImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        cbkAction = new Runnable(){
-            public void run(){
-                if(callBack != null)
-                    callBack.onSizeChanged(width, height);
-            }
+        cbkAction = () -> {
+            if(callBack != null)
+                callBack.onSizeChanged(width, height);
         };
     }
 
