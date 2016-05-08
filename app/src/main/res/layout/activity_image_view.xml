@@ -12,7 +12,7 @@
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
 
-    <view.BigImageView
+    <view.ZoomImageView
         android:id="@+id/fullscreen_content"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

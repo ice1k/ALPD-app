@@ -160,8 +160,9 @@ public class ZoomImageView extends View implements Observer {
                             int bottom) {
         super.onLayout(changed, left, top, right, bottom);
 
-        mAspectQuotient.updateAspectQuotient(right - left, bottom - top,
-                mBitmap.getWidth(), mBitmap.getHeight());
+        if(mBitmap != null)
+            mAspectQuotient.updateAspectQuotient(right - left, bottom - top,
+                    mBitmap.getWidth(), mBitmap.getHeight());
         mAspectQuotient.notifyObservers();
     }
 

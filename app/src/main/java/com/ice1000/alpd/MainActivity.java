@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ public class MainActivity extends DownloadingActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private LinearLayout images;
+    private View[] views;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +39,18 @@ public class MainActivity extends DownloadingActivity
      }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onStart() {
+        super.onStart();
         refresh();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(views == null) views = new View[images.getChildCount()];
+        for(int i = 0; i < images.getChildCount(); i++) {
+            views[i] = images.getChildAt(i);
+        }
     }
 
     private void initViews(){
@@ -134,10 +145,17 @@ public class MainActivity extends DownloadingActivity
         toast("refreshing");
         images.removeAllViews();
         v("size = " + size);
-        for(int i = 1; i < size && haveNew; i++){
+        if(views == null) {
+            for(int i = 1; i < size && haveNew; i++){
 //        while(Tools.exists(String.format(Locale.CHINESE, MAIN_URL, i))){
-            v("downloading " + i);
-            getImage(i, true);
+                v("downloading " + i);
+                getImage(i, true);
+            }
+        }
+        else {
+            for (View view : views) {
+                images.addView(view);
+            }
         }
     }
 
@@ -161,9 +179,9 @@ public class MainActivity extends DownloadingActivity
                 )
         );
         textView.setText(R.string.default_info);
-        textView.append("\n图片编号：" + poster.cnt);
+        textView.append("\nposter No." + poster.cnt);
         linearLayout.setOnClickListener(v -> {
-            toast("正在加载大图。。。");
+            toast("loading big poster...");
             Intent intent = new Intent(
                     MainActivity.this,
                     ImageViewActivity.class
