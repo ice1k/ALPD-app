@@ -3,8 +3,6 @@ package com.ice1000.alpd;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,12 +12,13 @@ import android.text.format.Time;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
+import java.io.IOException;
+
 import data.DownloadData;
 import data.Poster;
 import util.DownloadingActivity;
-import view.BigImageView;
-
-import java.io.IOException;
+import view.ZoomImageView;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -31,7 +30,7 @@ public class ImageViewActivity extends DownloadingActivity {
     private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
     private static final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler();
-    private BigImageView contentView;
+    private ZoomImageView contentView;
     private final Runnable mHidePart2Runnable = new Runnable() {
         @SuppressLint("InlinedApi")
         @Override
@@ -54,12 +53,13 @@ public class ImageViewActivity extends DownloadingActivity {
     };
     private boolean visible;
     private final Runnable mHideRunnable = this::hide;
+    private Poster poster;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_view);
-        toast("加载中");
+        toast("refreshing");
         initViews();
         initFuncs();
     }
@@ -71,7 +71,7 @@ public class ImageViewActivity extends DownloadingActivity {
 
         visible = true;
         controlsView = findViewById(R.id.fullscreen_content_controls);
-        contentView = (BigImageView) findViewById(R.id.fullscreen_content);
+        contentView = (ZoomImageView) findViewById(R.id.fullscreen_content);
 
         // Set up the user interaction to manually show or hide the system UI.
         if (contentView != null) {
@@ -100,15 +100,15 @@ public class ImageViewActivity extends DownloadingActivity {
                     Time time = new Time("GMT+8");
                     time.setToNow();
                     saveFile(
-                            ((BitmapDrawable) contentView.getDrawable()).getBitmap(),
+                            poster.getBitMap(),
                             String.format(
                                     "%s.png",
                                     time.toString()
                             )
                     );
-                    data.msg = "图片保存成功！";
+                    data.msg = "saved!";
                 } catch (IOException e) {
-                    data.msg = "图片保存失败！";
+                    data.msg = "failed to save";
                     e.printStackTrace();
                 }
                 message.obj = data;
@@ -184,10 +184,7 @@ public class ImageViewActivity extends DownloadingActivity {
 
     @Override
     protected void addView(Poster poster) {
-        contentView.setImageBitmap(BitmapFactory.decodeByteArray(
-                poster.bytes,
-                0,
-                poster.bytes.length
-        ));
+        contentView.setImage(poster.getBitMap());
+        this.poster = poster;
     }
 }

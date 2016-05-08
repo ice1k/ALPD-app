@@ -34,12 +34,11 @@ public class MainActivity extends DownloadingActivity
         initFuncs();
         v("init finished.");
         size = 100;
-        refresh();
-    }
+     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onResume() {
+        super.onResume();
         refresh();
     }
 
@@ -78,7 +77,7 @@ public class MainActivity extends DownloadingActivity
 
         switch (id) {
             case R.id.nav_upload:
-                toast("上传功能未开放");
+                toast("this function is still in developing!");
                 break;
             case R.id.nav_downloads:
                 Intent intent = new Intent(
@@ -96,7 +95,7 @@ public class MainActivity extends DownloadingActivity
                 go2Settings(true);
                 break;
             case R.id.nav_share:
-                toast("分享功能未开放");
+                toast("this function is still in developing");
                 break;
             default:
 
@@ -132,7 +131,7 @@ public class MainActivity extends DownloadingActivity
     }
 
     private void refresh(){
-        toast("刷新中。。。");
+        toast("refreshing");
         images.removeAllViews();
         v("size = " + size);
         for(int i = 1; i < size && haveNew; i++){

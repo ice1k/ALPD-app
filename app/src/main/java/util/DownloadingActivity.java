@@ -63,23 +63,20 @@ public abstract class DownloadingActivity extends BaseActivity {
     }
 
     protected void initFuncs() {
-        handler = new Handler(new Handler.Callback() {
-            @Override
-            public boolean handleMessage(Message msg) {
-                switch (msg.what){
-                    case IMAGE_GET:
-                        Poster poster = ((Poster)(msg.obj));
-                        addView(poster);
-                        break;
-                    case IMAGE_SAVE:
-                        DownloadData data = (DownloadData) msg.obj;
-                        data.dialog.dismiss();
-                        v(data.msg);
-                        toast(data.msg);
+        handler = new Handler(msg -> {
+            switch (msg.what){
+                case IMAGE_GET:
+                    Poster poster = ((Poster)(msg.obj));
+                    addView(poster);
+                    break;
+                case IMAGE_SAVE:
+                    DownloadData data = (DownloadData) msg.obj;
+                    data.dialog.dismiss();
+                    v(data.msg);
+                    toast(data.msg);
 
-                }
-                return true;
             }
+            return true;
         });
     }
 

@@ -1,10 +1,10 @@
 package com.ice1000.alpd;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 
-public class LaunchActivity extends Activity {
+import util.BaseActivity;
+
+public class LaunchActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,17 +13,11 @@ public class LaunchActivity extends Activity {
 
         new Thread(() -> {
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                startActivity(
-                        new Intent(
-                                LaunchActivity.this,
-                                MainActivity.class
-                        )
-                );
-                finish();
+                go2Activity(MainActivity.class, true);
         }).start();
     }
 }
