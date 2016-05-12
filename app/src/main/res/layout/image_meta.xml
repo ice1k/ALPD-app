@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/btn_default_more_light"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+			  xmlns:tools="http://schemas.android.com/tools"
+			  android:layout_width="match_parent"
+			  android:layout_height="wrap_content"
+			  android:background="@drawable/btn_default_more_light"
+			  android:orientation="horizontal">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/image_source"
-        tools:src="@drawable/test"
-        android:layout_gravity="center" />
+	<ImageView
+		android:id="@+id/image_source"
+		android:layout_width="100dp"
+		android:layout_height="100dp"
+		android:layout_gravity="center"
+		tools:src="@drawable/test"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        tools:text="图片信息"
-        android:id="@+id/text_source"
-        android:textColor="@color/abc_secondary_text_material_light"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="15sp" />
+	<TextView
+		android:id="@+id/text_source"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:gravity="center"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:textColor="@color/abc_secondary_text_material_light"
+		android:textSize="15sp"
+		tools:text="图片信息"/>
 </LinearLayout>
