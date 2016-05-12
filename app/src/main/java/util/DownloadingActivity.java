@@ -20,12 +20,6 @@ import data.Poster;
  */
 public abstract class DownloadingActivity extends BaseActivity {
 
-	protected Handler handler;
-	protected static boolean haveNew = true;
-
-	protected final static String SAVE_PATH
-			= Environment.getExternalStorageDirectory() + "/apld-download/";
-	protected int size;
 	public static final int IMAGE_GET = 0x000;
 	public static final int IMAGE_SAVE = 0x001;
 	public static final int IMAGE_ALL_GET = 0x002;
@@ -36,6 +30,11 @@ public abstract class DownloadingActivity extends BaseActivity {
 			"https://coding.net/u/ice1000/p/App-raw/git/raw/master/alpd_small/%d.png";
 	//            "https://raw.githubusercontent.com/ice1000/App-raw/master/alpd_small/%d.png";
 	public static final String COUNT_URL = "";
+	protected final static String SAVE_PATH
+			= Environment.getExternalStorageDirectory() + "/apld-download/";
+	protected static boolean haveNew = true;
+	protected Handler handler;
+	protected int size;
 //            "https://raw.githubusercontent.com/ice1000/App-raw/master/size";
 
 	protected void getImage(final int i, final boolean isSmall) {
