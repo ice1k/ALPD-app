@@ -5,7 +5,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="upload">投稿</string>
-    <string name="my_download">我的下载</string>
+    <string name="my_download">下载</string>
     <string name="settings">设置</string>
     <string name="share">分享</string>
     <string name="org_name">成外海报社</string>
@@ -44,4 +44,5 @@
     <string name="he_github">何天昊的github</string>
     <string name="cwoj">推广：成外OJ</string>
     <string name="app_raw_repos">APP后台资源托管</string>
+    <string name="source">源码</string>
 </resources>

@@ -19,6 +19,10 @@
             android:icon="@drawable/ic_menu_share"
             android:title="@string/share" />
         <item
+            android:id="@+id/nav_view_source"
+            android:icon="@drawable/ic_menu_share"
+            android:title="@string/source" />
+        <item
             android:id="@+id/contact_us"
             android:icon="@drawable/ic_perm_identity_black_18dp"
             android:title="@string/contact_us"/>
