@@ -1,6 +1,7 @@
 package com.ice1000.alpd;
 
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.view.View;
 
 import util.BaseActivity;
@@ -11,10 +12,9 @@ public class AboutMeActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_me);
-    }
-
-    public void back(View view){
-        go2Settings(true);
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null)
+            actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     public void openIceGithub(View view){

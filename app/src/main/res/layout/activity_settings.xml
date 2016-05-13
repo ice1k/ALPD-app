@@ -27,10 +27,6 @@
                 style="@style/setting_option"
                 android:onClick="joinUs"
                 android:text="@string/join_us" />
-            <TextView
-                style="@style/setting_option"
-                android:onClick="goBack"
-                android:text="@string/back_to_title" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

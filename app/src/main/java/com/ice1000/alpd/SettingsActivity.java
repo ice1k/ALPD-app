@@ -1,6 +1,7 @@
 package com.ice1000.alpd;
 
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.view.Menu;
 import android.view.View;
 
@@ -12,10 +13,9 @@ public class SettingsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-    }
-
-    public void goBack(View view){
-        go2Activity(MainActivity.class, true);
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null)
+            actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -24,7 +24,7 @@ public class SettingsActivity extends BaseActivity {
     }
 
     public void aboutAuthor(View view) {
-        go2Activity(AboutMeActivity.class, true);
+        go2Activity(AboutMeActivity.class, false);
     }
 
     public void joinUs(View view){
