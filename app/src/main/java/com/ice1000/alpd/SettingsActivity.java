@@ -28,6 +28,6 @@ public class SettingsActivity extends BaseActivity {
     }
 
     public void joinUs(View view){
-        toast("暂未开放");
+        toast(getString(R.string.havent_worked_out_yet));
     }
 }

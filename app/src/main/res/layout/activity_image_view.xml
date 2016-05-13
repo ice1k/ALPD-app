@@ -5,13 +5,6 @@
     android:background="#0099cc"
     tools:context="com.ice1000.alpd.ImageViewActivity">
 
-    <!-- The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc. -->
-
-    <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
-
     <view.ZoomImageView
         android:id="@+id/fullscreen_content"
         android:layout_width="wrap_content"
@@ -19,6 +12,7 @@
         android:background="#33b5e5"
         android:gravity="center"
         android:keepScreenOn="true"
+        android:onClick="toggle"
         android:textSize="50sp"
         android:textStyle="bold" />
 

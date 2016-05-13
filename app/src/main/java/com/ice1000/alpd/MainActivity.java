@@ -48,6 +48,8 @@ public class MainActivity extends DownloadingActivity
     @Override
     protected void onResume() {
         super.onResume();
+        if(recycler.getChildCount() <= 1)
+            refresh();
     }
 
     private void initViews() {
@@ -120,7 +122,7 @@ public class MainActivity extends DownloadingActivity
 
         switch (id) {
             case R.id.nav_upload:
-                toast("this function is still in developing!");
+                toast(getString(R.string.still_in_developing));
                 break;
             case R.id.nav_downloads:
                 Intent intent = new Intent(
@@ -133,7 +135,7 @@ public class MainActivity extends DownloadingActivity
                 startActivity(intent);
                 break;
             case R.id.nav_share:
-                toast("this function is still in developing");
+                toast(getString(R.string.still_in_developing));
                 break;
             case R.id.nav_view_source:
                 openWeb("https://github.com/ice1000/ALPD-app");
@@ -170,7 +172,7 @@ public class MainActivity extends DownloadingActivity
     }
 
     private void refresh() {
-        toast("refreshing");
+        toast(getString(R.string.refreshing));
         recycler.removeViews(0, recycler.getChildCount());
         v("size = " + size);
         for (int i = 1; i < size && haveNew; i++) {
@@ -259,7 +261,7 @@ public class MainActivity extends DownloadingActivity
                     )
             );
             textView.setText(R.string.default_info);
-            textView.append("\nposter No." + ID);
+            textView.append(getString(R.string.no_) + ID);
         }
 
         public int getID() {

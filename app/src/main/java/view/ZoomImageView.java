@@ -15,22 +15,34 @@ import java.util.Observer;
 
 public class ZoomImageView extends View implements Observer {
 
-    /** Paint object used when drawing bitmap. */
+    /**
+     * Paint object used when drawing bitmap.
+     */
     private final Paint mPaint = new Paint(Paint.FILTER_BITMAP_FLAG);
 
-    /** Rectangle used (and re-used) for cropping source image. */
+    /**
+     * Rectangle used (and re-used) for cropping source image.
+     */
     private final Rect mRectSrc = new Rect();
 
-    /** Rectangle used (and re-used) for specifying drawing area on canvas. */
+    /**
+     * Rectangle used (and re-used) for specifying drawing area on canvas.
+     */
     private final Rect mRectDst = new Rect();
 
-    /** Object holding aspect quotient */
+    /**
+     * Object holding aspect quotient
+     */
     private final AspectQuotient mAspectQuotient = new AspectQuotient();
 
-    /** The bitmap that we're zooming in, and drawing on the screen. */
+    /**
+     * The bitmap that we're zooming in, and drawing on the screen.
+     */
     private Bitmap mBitmap;
 
-    /** State of the zoom. */
+    /**
+     * State of the zoom.
+     */
     private ZoomState mState;
 
     private BasicZoomControl mZoomControl;
@@ -160,7 +172,7 @@ public class ZoomImageView extends View implements Observer {
                             int bottom) {
         super.onLayout(changed, left, top, right, bottom);
 
-        if(mBitmap != null)
+        if (mBitmap != null)
             mAspectQuotient.updateAspectQuotient(right - left, bottom - top,
                     mBitmap.getWidth(), mBitmap.getHeight());
         mAspectQuotient.notifyObservers();
@@ -173,7 +185,9 @@ public class ZoomImageView extends View implements Observer {
 
     private class BasicZoomListener implements View.OnTouchListener {
 
-        /** Zoom control to manipulate */
+        /**
+         * Zoom control to manipulate
+         */
         private BasicZoomControl mZoomControl;
 
         private float mFirstX = -1;
@@ -186,8 +200,7 @@ public class ZoomImageView extends View implements Observer {
         /**
          * Sets the zoom control to manipulate
          *
-         * @param control
-         *            Zoom control
+         * @param control Zoom control
          */
         public void setZoomControl(BasicZoomControl control) {
             mZoomControl = control;
@@ -254,23 +267,30 @@ public class ZoomImageView extends View implements Observer {
 
     private class BasicZoomControl implements Observer {
 
-        /** Minimum zoom level limit */
+        /**
+         * Minimum zoom level limit
+         */
         private static final float MIN_ZOOM = 1;
 
-        /** Maximum zoom level limit */
+        /**
+         * Maximum zoom level limit
+         */
         private static final float MAX_ZOOM = 16;
 
-        /** Zoom state under control */
+        /**
+         * Zoom state under control
+         */
         private final ZoomState mState = new ZoomState();
 
-        /** Object holding aspect quotient of view and content */
+        /**
+         * Object holding aspect quotient of view and content
+         */
         private AspectQuotient mAspectQuotient;
 
         /**
          * Set reference object holding aspect quotient
          *
-         * @param aspectQuotient
-         *            Object holding aspect quotient
+         * @param aspectQuotient Object holding aspect quotient
          */
         public void setAspectQuotient(AspectQuotient aspectQuotient) {
             if (mAspectQuotient != null) {
@@ -293,12 +313,9 @@ public class ZoomImageView extends View implements Observer {
         /**
          * Zoom
          *
-         * @param f
-         *            Factor of zoom to apply
-         * @param x
-         *            X-coordinate of invariant position
-         * @param y
-         *            Y-coordinate of invariant position
+         * @param f Factor of zoom to apply
+         * @param x X-coordinate of invariant position
+         * @param y Y-coordinate of invariant position
          */
         public void zoom(float f, float x, float y) {
 
@@ -329,10 +346,8 @@ public class ZoomImageView extends View implements Observer {
         /**
          * Pan
          *
-         * @param dx
-         *            Amount to pan in x-dimension
-         * @param dy
-         *            Amount to pan in y-dimension
+         * @param dx Amount to pan in x-dimension
+         * @param dy Amount to pan in y-dimension
          */
         public void pan(float dx, float dy) {
             final float aspectQuotient = mAspectQuotient.get();
@@ -350,8 +365,7 @@ public class ZoomImageView extends View implements Observer {
         /**
          * Help function to figure out max delta of pan from center position.
          *
-         * @param zoom
-         *            Zoom value
+         * @param zoom Zoom value
          * @return Max delta of pan
          */
         private float getMaxPanDelta(float zoom) {
@@ -427,14 +441,10 @@ public class ZoomImageView extends View implements Observer {
          * Updates and recalculates aspect quotient based on supplied view and
          * content dimensions.
          *
-         * @param viewWidth
-         *            Width of view
-         * @param viewHeight
-         *            Height of view
-         * @param contentWidth
-         *            Width of content
-         * @param contentHeight
-         *            Height of content
+         * @param viewWidth     Width of view
+         * @param viewHeight    Height of view
+         * @param contentWidth  Width of content
+         * @param contentHeight Height of content
          */
         public void updateAspectQuotient(float viewWidth, float viewHeight,
                                          float contentWidth, float contentHeight) {
@@ -498,8 +508,7 @@ public class ZoomImageView extends View implements Observer {
         /**
          * Help function for calculating current zoom value in x-dimension
          *
-         * @param aspectQuotient
-         *            (Aspect ratio content) / (Aspect ratio view)
+         * @param aspectQuotient (Aspect ratio content) / (Aspect ratio view)
          * @return Current zoom value in x-dimension
          */
         public float getZoomX(float aspectQuotient) {
@@ -509,8 +518,7 @@ public class ZoomImageView extends View implements Observer {
         /**
          * Help function for calculating current zoom value in y-dimension
          *
-         * @param aspectQuotient
-         *            (Aspect ratio content) / (Aspect ratio view)
+         * @param aspectQuotient (Aspect ratio content) / (Aspect ratio view)
          * @return Current zoom value in y-dimension
          */
         public float getZoomY(float aspectQuotient) {
@@ -520,8 +528,7 @@ public class ZoomImageView extends View implements Observer {
         /**
          * Set pan-x
          *
-         * @param panX
-         *            Pan-x value to set
+         * @param panX Pan-x value to set
          */
         public void setPanX(float panX) {
             if (panX != mPanX) {
@@ -533,8 +540,7 @@ public class ZoomImageView extends View implements Observer {
         /**
          * Set pan-y
          *
-         * @param panY
-         *            Pan-y value to set
+         * @param panY Pan-y value to set
          */
         public void setPanY(float panY) {
             if (panY != mPanY) {
@@ -546,8 +552,7 @@ public class ZoomImageView extends View implements Observer {
         /**
          * Set zoom
          *
-         * @param zoom
-         *            Zoom value to set
+         * @param zoom Zoom value to set
          */
         public void setZoom(float zoom) {
             if (zoom != mZoom) {
