@@ -13,19 +13,16 @@ ALPD组织的安卓app,原计划是用Kotlin写，后来发现AS装上Kotlin插�
 其实社团还有另两个程序员，不过<br/>
 一个现在还在学H5(我正在劝说他学ROR) :joy:<br/>
 一个在学iOS(无法阻止) :joy:<br/>
-学校的网好差啊。。
 
 ## 发展计划
 - [X] 更快的后端云
 - [X] 自动加载预览小图片
 - [X] 点击加载大图片
+- [X] 图片放大
 - [ ] 下拉刷新
 - [X] 下载大图片
 - [ ] 账号系统
 - [ ] 更优美的UI(社长你给我过来 :angry: )
-
-## 用到的lib
-[AndroidBigImage](https://github.com/nicolas-raoul/AndroidBigImage)<br/>
 
 ## 关于APP后台
 冰封由于没有得到社团的任何资金支持~<br/>
